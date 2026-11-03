@@ -64,27 +64,5 @@ I engineered a transparent composite index (irf_composite_index), converting ben
 This PostgreSQL phase successfully transformed raw, messy CMS data into a validated, queryable asset. By combining advanced SQL techniques with clinical domain knowledge, I demonstrated that while CMS data is highly actionable for measure-specific benchmarking, it cannot support a single composite ranking due to measure-specificity and systematic data suppression.
 Future Phases: I will export these structured views into Microsoft Excel for pivot table validation and Power BI to build an interactive, stakeholder-facing dashboard (incorporating DAX and dynamic filtering). Finally, I will utilize Python (Pandas/Scikit-Learn) to automate the ETL pipeline and perform predictive modeling on facility performance trends.
 
-**Down Below i have included the steps i took to create through answering the core questions and how i navigated through engineering this project along with visuals and table results from the queries:**
-
-![SQL Query1](/Images/SQL%20query%201.png)
-![Table data results](/Images/Table%201.png)
-
-Following the successful ingestion of the dataset, I validated the data integrity using SELECT * queries to confirm the row counts and schema alignment. I then executed a data optimization phase, dropping non-analytical columns—including address lines, phone numbers, footnotes, and date ranges—that were extraneous to the core business problem. This schema refinement minimized table bloat, reduced query execution times, and focused the dataset exclusively on the geographic, provider, and quality metrics required to deliver actionable intelligence on facility benchmarking.
-
-![Table Query Cleanup](/Images/Table%20Cleanup%201.png)
-
-With the schema refined and data integrity validated, I transitioned into the analytical phase by defining a set of core business questions to drive the project's value proposition:
-
-Which Inpatient Rehabilitation Facilities (IRFs) perform best and worst on key quality measures (e.g., pressure ulcers, falls with major injury, functional outcomes, readmissions)?
-
-How does facility quality vary by state and CMS region, and are there discernible geographic patterns?
-
-Do facilities that perform well on one measure also perform well on others, or is quality highly measure-specific?
-
-Which facilities have missing or suppressed data, and how does this data quality issue impact our ability to benchmark accurately?
-
-Can we construct a composite quality indicator to support referral or network decisions?
-
-Addressing Question 1: Identifying Top and Bottom Performers
 
 My analytical approach for this question was to isolate statistically significant performance rather than relying on raw, potentially misleading scores. I designed a series of structured queries utilizing CASE statements and MAX aggregations to pivot the long-format data into a provider-level scorecard. I then applied WHERE clause filters and ORDER BY sorting to extract the top 10 and bottom 10 facilities based on benchmark classifications (Better, No Different, Worse). This methodology ensured that the resulting lists reflected facilities that were statistically distinct from the national baseline, providing a clear, actionable view of the market's best and worst performers.
