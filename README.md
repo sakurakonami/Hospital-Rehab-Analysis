@@ -29,7 +29,7 @@ Core Skills Demonstrated:
 
 ## 📂 SQL Pipeline & Code Structure
 
-Click the links below to view the modular SQL scripts that power this analysis:
+Links below to view the modular SQL scripts that power this analysis:
 
 *   **[01_create_table.sql](/01_create_tables.sql):** Initializes the raw staging table for the CMS CSV data and creates the semantic `measure_reference` dictionary to decode clinical quality metrics.
 *   **[02_cleaning_tables.sql](/02_cleaning.sql):** Executes data cleaning by dropping non-analytical columns (address, phone, footnotes) to optimize database performance.
